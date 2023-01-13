@@ -23,7 +23,7 @@ app.get('/api/film/:title?', async (req, res)=> {
         //Pasamos a una funcion externa
          // respuesta de la api 
         const {title} = req.params;
-        const film = await getFilm(title);
+        const film = await getFilm(title);//getFilm es una funcion async por lo que hay que poner await para esperar al fetch
         res.status(200).json(film);
     }
     catch (error) {

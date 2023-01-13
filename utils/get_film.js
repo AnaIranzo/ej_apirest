@@ -5,7 +5,7 @@ const API_KEY = process.env.API_KEY
 async function getFilm(title) {
     let response = await fetch(`http://www.omdbapi.com/?t=${title}&apikey=${API_KEY}`); //{}
     let film = await response.json(); //{}
-    return film 
+    return film //retornamos film para usarlo en app.js
 }
 
 module.exports = getFilm;
