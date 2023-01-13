@@ -21,9 +21,10 @@ app.get('/api/film/:title?', async (req, res)=> {
         let film = await response.json(); //{}
         res.status(200).json(film); // respuesta de la api  */
         //Pasamos a una funcion externa
+         // respuesta de la api 
         const {title} = req.params;
-        getFilm(title, res);
-        
+        const film = await getFilm(title);
+        res.status(200).json(film);
     }
     catch (error) {
         console.log(`ERROR: ${error.stack}`);
@@ -33,7 +34,7 @@ app.get('/api/film/:title?', async (req, res)=> {
 app.post('/api/film', async (req,res)=>{
     //Simulacion con thunder client
     const newFilm = req.body;
-    res.status(200).json({msj: `Pelicula ${newFilm.Title} añadida a la base de datos`})
+    res.status(201).json({msj: `Pelicula ${newFilm.Title} añadida a la base de datos`})
     
     //Para hacer el post a la API
     /*  let response = await fetch (`http://www.omdbapi.com/?apikey=${API_KEY}`, {
